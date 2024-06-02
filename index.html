@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario con Bootstrap</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css"> <!-- Vinculamos el archivo CSS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2 class="text-center my-4">Formulario de contacto</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form novalidate>
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" required pattern="[A-Za-z\s]+" title="El nombre solo puede contener letras">
+            <div class="invalid-feedback">Por favor, ingrese un nombre válido.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+            <div class="invalid-feedback">Por favor, ingrese un correo electrónico válido.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Mensaje:</label>
+            <textarea class="form-control" id="mensaje" name="mensaje" rows="5" required></textarea>
+            <div class="invalid-feedback">Por favor, ingrese un mensaje.</div>
+          </div>
+
+          <div class="form-group">
+            <label>Género:</label>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="masculino" name="genero" value="masculino" required>
+              <label class="form-check-label" for="masculino">Masculino</label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" id="femenino" name="genero" value="femenino" required>
+              <label class="form-check-label" for="femenino">Femenino</label>
+            </div>
+            <div class="invalid-feedback">Por favor, seleccione un género.</div>
+          </div>
+
+          <div class="form-group">
+            <label for="pais">País:</label>
+            <select class="form-control" id="pais" name="pais" required>
+              <option value="">Seleccione un país</option>
+              <option value="es">España</option>
+              <option value="mx">México</option>
+              <option value="ar">Argentina</option>
+              <option value="ar">Colombia</option>
+            </select>
+            <div class="invalid-feedback">Por favor, seleccione un país.</div>
+          </div>
+
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="suscribir" name="suscribir">
+            <label class="form-check-label" for="suscribir">Suscribirse al boletín</label>
+          </div>
+
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Validación básica del formulario
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+</body>
+</html>
